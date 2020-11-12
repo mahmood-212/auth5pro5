@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <ul class="nav navbar-nav">
+
+            <li><a class="navbar-brand" href="{% url 'index'%}">BASUNBUL.CO</a></li>
+            <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a class="navbar-link" href="{% url 'auth5app:register' %}">Register</a></li>
+            {% if user.is_authenticated %}
+                <li><a class="navbar-link" href="{% url 'user_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="navbar-link" href="{% url 'auth5app:user_login' %}">Login</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    {% block body_block %}
+
+    {% endblock %}
+
+</div>
+
+</body>
+</html>
